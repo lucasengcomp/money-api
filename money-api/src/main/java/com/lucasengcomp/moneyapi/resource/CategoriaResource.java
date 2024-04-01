@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 
@@ -30,16 +28,7 @@ public class CategoriaResource {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Categoria> criar(@Valid @RequestBody Categoria categoria, HttpServletResponse response) {
         Categoria categoriaSalva = repository.save(categoria);
-
-        URI uri = ServletUriComponentsBuilder
-                .fromCurrentRequestUri()
-                .path("/{codigo}")
-                .buildAndExpand(categoriaSalva.getCodigo())
-                .toUri();
-
-        response.setHeader("Location", uri.toASCIIString());
-
-        return ResponseEntity.created(uri).body(categoriaSalva);
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoriaSalva);
     }
 
     @GetMapping("/{codigo}")
