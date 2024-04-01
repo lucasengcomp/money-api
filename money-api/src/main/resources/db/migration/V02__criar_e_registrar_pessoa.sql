@@ -1,0 +1,33 @@
+CREATE TABLE IF NOT EXISTS pessoa (
+    codigo BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    nome VARCHAR(50) NOT NULL,
+    logradouro VARCHAR(30),
+    numero VARCHAR(30),
+    complemento VARCHAR(30),
+    bairro VARCHAR(30),
+    cep VARCHAR(30),
+    cidade VARCHAR(30),
+    estado VARCHAR(30),
+    ativo BOOLEAN NOT NULL
+);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) VALUES
+('Maria da Silva', 'Rua das Flores', '20', 'Apto 303', 'Centro', '12345-678', 'São Paulo', 'SP', true),
+('José Santos', 'Avenida das Palmeiras', '123', null, 'Jardim Botânico', '98765-432', 'Rio de Janeiro', 'RJ', true),
+('Ana Carolina', 'Rua do Bosque', '456', 'Casa 2', 'Vila Madalena', '54321-876', 'São Paulo', 'SP', true),
+('Fernando Oliveira', 'Avenida das Gaivotas', '789', null, 'Praia Grande', '13579-246', 'Santos', 'SP', true),
+('Mariana Costa', 'Rua dos Coqueiros', '1010', 'Bloco B', 'Praia da Costa', '24680-135', 'Vila Velha', 'ES', true),
+('Roberto Santos', 'Avenida das Águias', '222', null, 'Jardim América', '56789-012', 'Goiânia', 'GO', true),
+('Amanda Lima', 'Rua das Margaridas', '333', 'Casa 3', 'Vila Nova', '01234-567', 'Porto Alegre', 'RS', true),
+('Carlos Eduardo', 'Avenida dos Sabiás', '444', null, 'Alto da Boa Vista', '67890-123', 'Campinas', 'SP', true),
+('Carla Rodrigues', 'Rua das Violetas', '555', 'Apto 101', 'Jardim Primavera', '32165-987', 'Fortaleza', 'CE', true),
+('Luciana Oliveira', 'Avenida das Orquídeas', '666', null, 'Jardim das Flores', '54321-789', 'Brasília', 'DF', true),
+('Rafael Souza', 'Rua das Borboletas', '777', 'Casa 4', 'Centro', '45678-901', 'Belém', 'PA', true),
+('Patrícia Santos', 'Avenida dos Pinheiros', '888', null, 'Vila Mariana', '98765-432', 'Salvador', 'BA', true),
+('Marcos Lima', 'Rua das Estrelas', '999', 'Apto 202', 'Alphaville', '23456-789', 'Barueri', 'SP', true),
+('Juliana Oliveira', 'Avenida das Rosas', '1111', null, 'Copacabana', '87654-321', 'Rio de Janeiro', 'RJ', true),
+('Gustavo Pereira', 'Rua dos Lírios', '1222', 'Casa 5', 'Jardim Botânico', '56789-012', 'São Paulo', 'SP', true),
+('Fabiana Silva', 'Avenida dos Cravos', '1333', null, 'Jardim das Flores', '01234-567', 'Curitiba', 'PR', true),
+('Marcelo Santos', 'Rua das Tulipas', '1444', 'Apto 303', 'Vila Madalena', '67890-123', 'São Paulo', 'SP', true),
+('Sandra Oliveira', 'Avenida das Papoulas', '1555', null, 'Centro', '32165-987', 'Belo Horizonte', 'MG', true),
+('Ricardo Lima', 'Rua dos Narcisos', '1666', 'Casa 6', 'Alto da Boa Vista', '45678-901', 'Porto Alegre', 'RS', true),
+('Ana Paula', 'Avenida das Margaridas', '1777', null, 'Jardim América', '98765-432', 'Goiânia', 'GO', true);
