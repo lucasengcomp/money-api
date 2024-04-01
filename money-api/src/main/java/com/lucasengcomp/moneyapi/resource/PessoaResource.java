@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -44,5 +45,20 @@ public class PessoaResource {
         return this.repository.findById(codigo)
                 .map(pessoa -> ResponseEntity.ok(pessoa))
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{codigo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Void> remover(@PathVariable Long codigo) {
+        if (!pessoaExistePorCodigo(codigo)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        repository.deleteById(codigo);
+        return ResponseEntity.noContent().build();
+    }
+
+    private boolean pessoaExistePorCodigo(Long codigo) {
+        return repository.existsById(codigo);
     }
 }
