@@ -3,6 +3,7 @@ package com.lucasengcomp.moneyapi.resource;
 import com.lucasengcomp.moneyapi.model.Categoria;
 import com.lucasengcomp.moneyapi.reposiory.CategoriaRepository;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class CategoriaResource {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Categoria> criar(@RequestBody Categoria categoria, HttpServletResponse response) {
+    public ResponseEntity<Categoria> criar(@Valid @RequestBody Categoria categoria, HttpServletResponse response) {
         Categoria categoriaSalva = repository.save(categoria);
 
         URI uri = ServletUriComponentsBuilder
