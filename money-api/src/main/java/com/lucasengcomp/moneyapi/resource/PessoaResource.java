@@ -3,10 +3,13 @@ package com.lucasengcomp.moneyapi.resource;
 import com.lucasengcomp.moneyapi.evento.RecursoCriadoEvent;
 import com.lucasengcomp.moneyapi.model.Pessoa;
 import com.lucasengcomp.moneyapi.reposiory.PessoaRepository;
+import com.lucasengcomp.moneyapi.service.PessoaService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +27,9 @@ public class PessoaResource {
 
     @Autowired
     private ApplicationEventPublisher publisher;
+
+    @Autowired
+    private PessoaService service;
 
     @GetMapping
     public List<Pessoa> listar() {
@@ -56,6 +62,12 @@ public class PessoaResource {
 
         repository.deleteById(codigo);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{codigo}")
+    public ResponseEntity<Pessoa> atualizar(@PathVariable Long codigo, @Valid @RequestBody Pessoa pessoa) {
+        Pessoa pessoaSalva = service.atualizar(codigo, pessoa);
+        return ResponseEntity.ok(pessoaSalva);
     }
 
     private boolean pessoaExistePorCodigo(Long codigo) {
