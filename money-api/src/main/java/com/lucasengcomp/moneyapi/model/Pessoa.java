@@ -1,5 +1,6 @@
 package com.lucasengcomp.moneyapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lucasengcomp.moneyapi.model.embededs.Endereco;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -15,20 +16,11 @@ public class Pessoa {
     @NotNull
     private String nome;
 
-    private Boolean ativo;
-
     @Embedded
     private Endereco endereco;
 
-    public Pessoa() {
-    }
-
-    public Pessoa(Long codigo, String nome, Boolean ativo, Endereco endereco) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.ativo = ativo;
-        this.endereco = endereco;
-    }
+    @NotNull
+    private Boolean ativo;
 
     public Long getCodigo() {
         return codigo;
@@ -46,6 +38,14 @@ public class Pessoa {
         this.nome = nome;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
     public Boolean getAtivo() {
         return ativo;
     }
@@ -54,11 +54,9 @@ public class Pessoa {
         this.ativo = ativo;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    @JsonIgnore
+    @Transient
+    public boolean isInativo() {
+        return !this.ativo;
     }
 }
