@@ -2,8 +2,9 @@ package com.lucasengcomp.moneyapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lucasengcomp.moneyapi.model.embededs.Endereco;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "pessoa")

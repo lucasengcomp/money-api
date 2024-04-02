@@ -1,7 +1,7 @@
 package com.lucasengcomp.moneyapi.model.embededs;
 
 
-import jakarta.persistence.Embeddable;
+import javax.persistence.Embeddable;
 
 @Embeddable
 public class Endereco {

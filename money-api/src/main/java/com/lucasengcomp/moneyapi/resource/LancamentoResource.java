@@ -4,10 +4,9 @@ import com.lucasengcomp.moneyapi.evento.RecursoCriadoEvent;
 import com.lucasengcomp.moneyapi.exceptionhandler.ErroMensagemPadrao;
 import com.lucasengcomp.moneyapi.model.Lancamento;
 import com.lucasengcomp.moneyapi.reposiory.LancamentoRepository;
+import com.lucasengcomp.moneyapi.reposiory.filter.LancamentoFilter;
 import com.lucasengcomp.moneyapi.service.LancamentoService;
 import com.lucasengcomp.moneyapi.service.exceptions.PessoaInexistenteOuInativaException;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
@@ -16,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class LancamentoResource {
     private MessageSource messageSource;
 
     @GetMapping
-    public List<Lancamento> listar() {
+    public List<Lancamento> pesquisar(LancamentoFilter filter) {
         return repository.findAll();
     }
 

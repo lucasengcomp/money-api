@@ -4,14 +4,14 @@ import com.lucasengcomp.moneyapi.evento.RecursoCriadoEvent;
 import com.lucasengcomp.moneyapi.model.Pessoa;
 import com.lucasengcomp.moneyapi.reposiory.PessoaRepository;
 import com.lucasengcomp.moneyapi.service.PessoaService;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.List;
 
 

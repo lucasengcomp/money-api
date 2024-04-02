@@ -1,9 +1,9 @@
 package com.lucasengcomp.moneyapi.model;
 
 import com.lucasengcomp.moneyapi.model.enums.TipoLancamento;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
